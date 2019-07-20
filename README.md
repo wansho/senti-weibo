@@ -142,5 +142,7 @@ In order to prove the significance of consistent text pre-processing rules in th
 
 In Chinese: 
 
-![Architecture](http://assets.processon.com/chart_image/5d328200e4b0511f130c1930.png)
+![1563592686501](assets/1563592686501.png)
+
+
 
