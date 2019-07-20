@@ -1,7 +1,17 @@
 # Senti-weibo
 http://sentiweibo.top : A Real-Time Sentiment Analysis System for Sina Weibo
 
-[TOC]
+Table of Contents
+=================
+
+   * [Senti-weibo](#senti-weibo)
+      * [Open Source](#open-source)
+         * [Corpus/Test-Dataset/Trained-model](#corpustest-datasettrained-model)
+         * [Dictionary and Seed words](#dictionary-and-seed-words)
+         * [Topic Data](#topic-data)
+         * [Weibo-preprocess-toolkit](#weibo-preprocess-toolkit)
+      * [Seg Tools Compare in Test Dataset](#seg-tools-compare-in-test-dataset)
+      * [Architecture of Senti-weibo](#architecture-of-senti-weibo)
 
 ## Open Source
 
