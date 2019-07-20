@@ -1,6 +1,8 @@
 # Senti-weibo
 http://sentiweibo.top : A Real-Time Sentiment Analysis System for Sina Weibo
 
+[TOC]
+
 ## Open Source
 
 ### Corpus/Test-Dataset/Trained-model
@@ -78,7 +80,7 @@ We open-source the crawled weibos about the topic of **Huawei** and **China-US T
 | Huawei         | [Google Drive](https://drive.google.com/file/d/11TgYQZrqJddoRscE08B42He4TwD7_Jh2/view?usp=sharing) | 2019-03-12 — 2019-07-01 |
 | China-US Trade | [Google Drive](https://drive.google.com/file/d/1CkDvSSvYZhrx5A09getatfmiSxnY26Mq/view?usp=sharing) | 2019-04-20 — 2019-07-01 |
 
-### weibo-preprocess-toolkit
+### Weibo-preprocess-toolkit
 
 Weibo Preprocess Toolkit. [Github](<https://github.com/wansho/weibo-preprocess-toolkit>)
 
@@ -125,3 +127,10 @@ print(preprocess.preprocess(test_weibo, simplified=False, keep_stop_word=False))
 ## Seg Tools Compare in Test Dataset
 
 In order to prove the significance of consistent text pre-processing rules in the training and online environment, we compare six segmentation tools with this script: [compare.py](./seg-tools-compare/compare.py).
+
+## Architecture of Senti-weibo
+
+In Chinese: 
+
+![Architecture](http://assets.processon.com/chart_image/5d328200e4b0511f130c1930.png)
+
