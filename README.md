@@ -17,12 +17,12 @@ Table of Contents
 
 ### Corpus/Test-Dataset/Trained-model
 
-|                              | download link                                                | desc                                            |
-| ---------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
-| WeiboSentiment2019(Training) | [Google Drive](https://drive.google.com/open?id=1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6) | 671053 weibos, 407058 positive, 263995 negative |
-| Test-Dataset                 | [Google Drive](http://bit.ly/2RMGEix)                        | 1790 weibos, 1010 negative, 780 positive        |
-| Trained-Model                | [Google Drive](https://drive.google.com/open?id=1duD2bIzMBjBnjOvJ9T10lR1HqKBeYarM) | 1.74 GB, precision: 90.11 %                     |
-| Public-Weibo-Dataset         | [Google Drive](http://bit.ly/2KHMaSy)                        | 955MB, 35.2 million weibos                      |
+|                           | download link                                                | desc                                            |
+| ------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
+| Senti-weibo2019(Training) | [Google Drive](https://drive.google.com/open?id=1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6) | 671053 weibos, 407058 positive, 263995 negative |
+| Test-Dataset              | [Google Drive](http://bit.ly/2RMGEix)                        | 1790 weibos, 1010 negative, 780 positive        |
+| Trained-Model             | [Google Drive](https://drive.google.com/open?id=1duD2bIzMBjBnjOvJ9T10lR1HqKBeYarM) | 1.74 GB, precision: 90.11 %                     |
+| Public-Weibo-Dataset      | [Google Drive](http://bit.ly/2KHMaSy)                        | 955MB, 35.2 million weibos                      |
 
 **Train Demo**
 
