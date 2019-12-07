@@ -11,6 +11,7 @@ Table of Contents
          * [Topic Data](#topic-data)
          * [Weibo-preprocess-toolkit](#weibo-preprocess-toolkit)
       * [Seg Tools Compare in Test Dataset](#seg-tools-compare-in-test-dataset)
+      * [Snapshot-of-Senti-weibo](#snapshot-of-senti-weibo)
       * [Architecture of Senti-weibo](#architecture-of-senti-weibo)
 
 ## Open Source
@@ -137,6 +138,10 @@ print(preprocess.preprocess(test_weibo, simplified=False, keep_stop_word=False))
 ## Seg Tools Compare in Test Dataset
 
 In order to prove the significance of consistent text pre-processing rules in the training and online environment, we compare six segmentation tools with this script: [compare.py](./seg-tools-compare/compare.py).
+
+## Snapshot-of-Senti-weibo
+
+[Website-snapshot](website-snapshot/README.md)
 
 ## Architecture of Senti-weibo
 
