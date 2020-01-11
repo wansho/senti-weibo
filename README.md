@@ -1,5 +1,5 @@
 # Senti-weibo
-[Senti-weibo](http://sentiweibo.top/): A Real-Time Sentiment Analysis System for Sina Weibo.
+[Senti-weibo](http://sentiweibo.top/): A Sentiment Analysis System for Sina Weibo.
 
 http://sentiweibo.top/
 
