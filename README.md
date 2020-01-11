@@ -69,15 +69,15 @@ print(toolkit.preprocess(test_weibo , simplified=True , keep_stop_word=True))
 
  In fact, the iteration can be interpreted as a process of sifting sands out of flour. Given a sieve and some flour to be sifted, our goal is to sift out the sand with sieve. The difficulty is that the holes on the sieve are not all small holes, there will always be sands mixed into flour. Purify Function plays an important role in this part. Classifier trained by initialized corpus will lead to over-fitting iff we apply it to purify the corpus. So we divide the corpus into training set and verification set, and sample subset of training dataset to train the classifier many times. Multiple classifiers are used to verify the sentiment label of the verification dataset, and then sift out the samples whose classification results are not unified. Query Function can help to continuously recall new high-quality data to guarantee the robustness of the model. 
 
-<img src="assets/Model-Iteration-2.png" alt="Corpus Iteration" style="zoom: 33%;" />
+![Corpus Iteration](assets/Model-Iteration-2.png)
 
 ### UML of Senti-weibo
 
-<img src="assets/Senti-weibo-UML-En.png" style="zoom: 40%;" />
+![UML of Senti-weibo](assets/Senti-weibo-UML-En.png)
 
 ### Weibo Topic Spider
 
-<img src="assets/爬虫框架-En.png" alt="Architecture of Spider" style="zoom:50%;" />
+![Architecture of Spider](assets/爬虫框架-En.png)
 
 ### Snapshot of Senti-weibo
 
