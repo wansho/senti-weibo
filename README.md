@@ -1,86 +1,30 @@
 # Senti-weibo
-http://sentiweibo.top : A Real-Time Sentiment Analysis System for Sina Weibo
+[Senti-weibo](http://sentiweibo.top/): A Real-Time Sentiment Analysis System for Sina Weibo.
 
-Table of Contents
-=================
+http://sentiweibo.top/
 
-   * [Senti-weibo](#senti-weibo)
-      * [Open Source](#open-source)
-         * [Corpus/Test-Dataset/Trained-model](#corpustest-datasettrained-model)
-         * [Dictionary and Seed words](#dictionary-and-seed-words)
-         * [Topic Data](#topic-data)
-         * [Weibo-preprocess-toolkit](#weibo-preprocess-toolkit)
-      * [Seg Tools Compare in Test Dataset](#seg-tools-compare-in-test-dataset)
-      * [Snapshot-of-Senti-weibo](#snapshot-of-senti-weibo)
-      * [Architecture of Senti-weibo](#architecture-of-senti-weibo)
+## Introduction
+
+* [Introduction video on Youtube](https://www.youtube.com/watch?v=97kOLd2Gl5E)
+
+<iframe    width="560" height="315" src="https://www.youtube.com/embed/97kOLd2Gl5E"    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"    allowfullscreen></iframe>
 
 ## Open Source
 
 ### Corpus/Test-Dataset/Trained-model
 
-|                           | download link                                                | desc                                            |
+|                           | Download link                                                | Desc                                            |
 | ------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
 | Senti-weibo2019(Training) | [Google Drive](https://drive.google.com/open?id=1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6) | 671053 weibos, 407058 positive, 263995 negative |
 | Test-Dataset              | [Google Drive](http://bit.ly/2RMGEix)                        | 1790 weibos, 1010 negative, 780 positive        |
-| Trained-Model             | [Google Drive](https://drive.google.com/open?id=1duD2bIzMBjBnjOvJ9T10lR1HqKBeYarM) | 1.74 GB, precision: 90.11 %                     |
+| Trained-Model by fastText | [Google Drive](https://drive.google.com/open?id=1duD2bIzMBjBnjOvJ9T10lR1HqKBeYarM) | 1.74 GB                                         |
 | Public-Weibo-Dataset      | [Google Drive](http://bit.ly/2KHMaSy)                        | 955MB, 35.2 million weibos                      |
 
-**Train Demo**
-
-Attention: The model trained by fastText can not be reproduced, we performed multiple trainings on the training set and selected the best classifier as our final classifier.
-
-```shell
-$ git clone https://github.com/facebookresearch/fastText.git
-$ cd fastText
-$ pip install .
-```
-
-```Python
-import pandas as pd
-import fastText
-
-corpus_path = "senti_corpus.csv"
-df_corpus = pd.read_csv(corpus_path, encoding="utf-8")
-train_list = (df_corpus["label"] + " , " + df_corpus["seged_weibo"]).tolist()
-# input must be a filepath
-train_path = "train.txt" 
-model_path = "senti-model.bin"
-with open(train_path, "w", encoding="utf_8_sig") as fw:
-    for line in train_list:
-        fw.write(u"{}\n".format(line))
-# train
-model_classifier = fastText.train_supervised(train_path,
-                                             label="__label__",
-                                             dim=200,
-                                             lr=0.2, 
-                                             epoch=25,
-                                             wordNgrams=2,
-                                             )
-model_classifier.save_model(model_path)
-```
-
-**Test Demo**
-
-```Python
-import fastText
-import pandas as pd
-
-test_path = "senti_test.csv"
-df_test = pd.read_csv(test_path, encoding="utf-8")
-test_list = (df_test["label"] + " , " + df_test["seged_weibo"]).tolist()
-test_path2 = "test.txt"
-with open(test_path2, "w", encoding="utf_8_sig") as fw:
-    for line in test_list:
-        fw.write(u"{}\n".format(line))
-model_path = "senti-model.bin"
-model_classifier = fastText.load_model(model_path) # input must be a filepath
-result = model_classifier.test(test_path2)
-print(result[1]) # accuracy
-```
+Training and test scripts can be available at [training_and_test.py](./scripts/training_and_test.py)
 
 ### Dictionary and Seed words
 
-[README](./corpus-and-dictionary/README.md)
+Details at [README](./corpus-and-dictionary/README.md)
 
 ### Topic Data
 
@@ -93,7 +37,7 @@ We open-source the crawled weibos about the topic of **Huawei** and **China-US T
 
 ### Weibo-preprocess-toolkit
 
-Weibo Preprocess Toolkit. [Github](<https://github.com/wansho/weibo-preprocess-toolkit>)
+Open-sourced on [Github](<https://github.com/wansho/weibo-preprocess-toolkit>). In order to prove the significance of consistent text pre-processing rules in the training and online environment, we compare six segmentation tools with this script: [segmentation_tools_compare.py](./scripts/segmentation_tools_compare.py).
 
 **Demo**
 
@@ -106,48 +50,40 @@ from weibo_preprocess_toolkit import WeiboPreprocess
 
 preprocess = WeiboPreprocess()
 
-test_weibo = "所以我都不喝蒙牛 #南京·大行宫[地点]#，一直不喜欢蒙牛。謝駿毅 赞[122]转发[11] [超话] 收藏09月11日 18:57 "
+from weibo_preprocess_toolkit import WeiboPreprocess
 
-# traditional2simplified
-print(preprocess.traditional2simplified(test_weibo))
-# 所以我都不喝蒙牛 #南京·大行宫[地点]#，一直不喜欢蒙牛。谢骏毅 赞[122]转发[11] [超话] 收藏09月11日 18:57
-
-# clean weibo with simplified Chinese
-print(preprocess.clean(test_weibo))
-# 所以我都不喝蒙牛 一直不喜欢蒙牛 谢骏毅
-
-# clean weibo 
-print(preprocess.clean(test_weibo, simplified=False))
-# 所以我都不喝蒙牛 一直不喜欢蒙牛 謝駿毅
-
-# seg weibo, keep stop words
-print(preprocess.cut(test_weibo))
-# ['所以', '我', '都', '不喝', '蒙牛', '#', '南京', '·', '大行宫', '[', '地点', ']', '#', '，', '一直', '不喜欢', '蒙牛', '。', '謝駿毅', '赞', '[', '122', ']', '转发', '[', '11', ']', '[', '超话', ']', '收藏', '09', '月', '11', '日', '18', ':', '57', '\xa0']
-
-# seg weibo, don't keep stop words
-print(preprocess.cut(test_weibo, keep_stop_word=False))
-# ['都', '不喝', '蒙牛', '#', '南京', '·', '大行宫', '[', '地点', ']', '#', '，', '不喜欢', '蒙牛', '。', '謝駿毅', '赞', '[', '122', ']', '转发', '[', '11', ']', '[', '超话', ']', '收藏', '09', '月', '11', '日', '18', ':', '57', '\xa0']
-
-# clean and cut weibo, keep_stop_words, simplified Chinese
-print(preprocess.preprocess(test_weibo))
-# 所以 我 都 不喝 蒙牛 一直 不喜欢 蒙牛 谢骏毅
-print(preprocess.preprocess(test_weibo, simplified=False, keep_stop_word=False))
-# 都 不喝 蒙牛 不喜欢 蒙牛 謝駿毅
+toolkit = WeiboPreprocess()
+test_weibo = "所 以 我 都 不 喝 蒙 牛， 一 直 不 喜 歡 蒙 牛。 #南 京· 大 行 宫[地 点]# 赞[122]转发[11] [超 话] 收 藏09月11日 18:57"
+cleaned_weibo = toolkit.clean(test_weibo)
+print(cleaned_weibo)
+# ’所 以 我 都 不 喝 蒙 牛 一 直 不 喜 欢 蒙 牛’
+print(toolkit.cut(cleaned_weibo))
+# [’所 以’, ’我’, ’都’, ’不 喝’, ’蒙 牛’, ’一 直’, ’不 喜 欢’, ’蒙 牛 ’]
+print(toolkit.preprocess(test_weibo , simplified=True , keep_stop_word=True))
+# ’所 以 我 都 不 喝 蒙 牛 一 直 不 喜 欢 蒙 牛’
 ```
 
-## Seg Tools Compare in Test Dataset
+## Details of Senti-weibo
 
-In order to prove the significance of consistent text pre-processing rules in the training and online environment, we compare six segmentation tools with this script: [compare.py](./seg-tools-compare/compare.py).
+### Corpus Iteration
 
-## Snapshot-of-Senti-weibo
+ In fact, the iteration can be interpreted as a process of sifting sands out of flour. Given a sieve and some flour to be sifted, our goal is to sift out the sand with sieve. The difficulty is that the holes on the sieve are not all small holes, there will always be sands mixed into flour. Purify Function plays an important role in this part. Classifier trained by initialized corpus will lead to over-fitting iff we apply it to purify the corpus. So we divide the corpus into training set and verification set, and sample subset of training dataset to train the classifier many times. Multiple classifiers are used to verify the sentiment label of the verification dataset, and then sift out the samples whose classification results are not unified. Query Function can help to continuously recall new high-quality data to guarantee the robustness of the model. 
 
-[Website-snapshot](website-snapshot/README.md)
+<img src="assets/Model-Iteration-2.png" alt="Corpus Iteration" style="zoom: 33%;" />
 
-## Architecture of Senti-weibo
+### UML of Senti-weibo
 
-In Chinese: 
+<img src="assets/Senti-weibo-UML-En.png" style="zoom: 40%;" />
 
-![1563592686501](assets/1563592686501.png)
+### Weibo Topic Spider
+
+<img src="assets/爬虫框架-En.png" alt="Architecture of Spider" style="zoom:50%;" />
+
+### Snapshot of Senti-weibo
+
+Details at [Website-snapshot](website-snapshot/README.md)
+
+
 
 
 
