@@ -7,7 +7,9 @@ http://sentiweibo.top/
 
 * [Introduction video on Youtube](https://www.youtube.com/watch?v=97kOLd2Gl5E)
 
-<iframe    width="560" height="315" src="https://www.youtube.com/embed/97kOLd2Gl5E"    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"    allowfullscreen></iframe>
+  ![Senti-weibo](assets/image-20200111162446986.png)
+
+* [Introduction video on Bilibili](https://www.bilibili.com/video/av82448913)
 
 ## Open Source
 
