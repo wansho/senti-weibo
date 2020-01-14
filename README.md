@@ -1,5 +1,5 @@
-# Senti-weibo
-[Senti-weibo](http://sentiweibo.top/): A Sentiment Analysis System for Sina Weibo.
+# S2AP
+[[S2AP]](http://sentiweibo.top/): A Sequential Senti-weibo Analysis Platform.
 
 http://sentiweibo.top/
 
@@ -7,7 +7,7 @@ http://sentiweibo.top/
 
 * [Introduction video on Youtube](https://www.youtube.com/watch?v=97kOLd2Gl5E)
 
-  ![Senti-weibo](assets/image-20200111162446986.png)
+  ![S2AP](assets/image-20200114122948639.png)
 
 * [Introduction video on Bilibili](https://www.bilibili.com/video/av82448913)
 
@@ -17,7 +17,7 @@ http://sentiweibo.top/
 
 |                           | Download link                                                | Desc                                            |
 | ------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
-| Senti-weibo2019(Training) | [Google Drive](https://drive.google.com/open?id=1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6) | 671053 weibos, 407058 positive, 263995 negative |
+| Senti-weibo               | [Google Drive](https://drive.google.com/open?id=1yMCP44ICH1Gl29x920QyT9LQCnVg_2S6) | 671053 weibos, 407058 positive, 263995 negative |
 | Test-Dataset              | [Google Drive](http://bit.ly/2RMGEix)                        | 1790 weibos, 1010 negative, 780 positive        |
 | Trained-Model by fastText | [Google Drive](https://drive.google.com/open?id=1duD2bIzMBjBnjOvJ9T10lR1HqKBeYarM) | 1.74 GB                                         |
 | Public-Weibo-Dataset      | [Google Drive](http://bit.ly/2KHMaSy)                        | 955MB, 35.2 million weibos                      |
@@ -65,7 +65,7 @@ print(toolkit.preprocess(test_weibo , simplified=True , keep_stop_word=True))
 # ’所 以 我 都 不 喝 蒙 牛 一 直 不 喜 欢 蒙 牛’
 ```
 
-## Details of Senti-weibo
+## Details of S2AP
 
 ### Corpus Iteration
 
@@ -73,15 +73,15 @@ print(toolkit.preprocess(test_weibo , simplified=True , keep_stop_word=True))
 
 ![Corpus Iteration](assets/Model-Iteration-2.png)
 
-### UML of Senti-weibo
+### UML of S2AP
 
-![UML of Senti-weibo](assets/Senti-weibo-UML-En.png)
+![UML of S2AP](assets/Senti-weibo-UML-En.png)
 
 ### Weibo Topic Spider
 
 ![Architecture of Spider](assets/爬虫框架-En.png)
 
-### Snapshot of Senti-weibo
+### Snapshot of S2AP
 
 Details at [Website-snapshot](website-snapshot/README.md)
 
