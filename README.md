@@ -1,7 +1,7 @@
 # S2AP
 [[S2AP]](http://sentiweibo.top/): A Sequential Senti-weibo Analysis Platform.
 
-http://sentiweibo.top/
+![S2AP](assets/S2AP-Demo.gif)
 
 ## Introduction
 
